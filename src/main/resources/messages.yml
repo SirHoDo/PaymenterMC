@@ -1,0 +1,10 @@
+In-Game:
+  Plugin-Prefix: '&a&lPaymenter &8» &e'
+
+Commands:
+  Only-By-Player: '&cyou can execute this command only as player!'
+  No-Permission: '&cyou don''t have permission to use this command!'
+  Admin-Commands:
+    Reload: '&asuccessfully reloaded all configuration files!'
+
+  Buy: '&bTo purchase from our store, please visit &6https://donationstore.url.here'

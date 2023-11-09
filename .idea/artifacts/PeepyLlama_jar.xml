@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PeepyLlama:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PeepyLlama_jar</output-path>
+    <root id="archive" name="PeepyLlama.jar">
+      <element id="module-output" name="IUNGO" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/zaxxer/HikariCP/3.3.1/HikariCP-3.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/bstats/bstats-base/3.0.1/bstats-base-3.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/bstats/bstats-bukkit/3.0.1/bstats-bukkit-3.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/github/Despical/Commons/1.6.4/Commons-1.6.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/github/Despical/InventoryFramework/2.2.6/InventoryFramework-2.2.6.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
