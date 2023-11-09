@@ -29,6 +29,12 @@ jobs:
       - name: Build with Maven
         run: mvn clean package -Dmaven.javadoc.skip=true
 
+      - name: Set Git User Identity
+        run: |
+          git config user.email "${{ secrets.EMAIL }}"
+          git config user.name "SirHoDo"
+        shell: bash
+
       - name: Create Git Tag
         run: git tag -a v${{ env.PROJECT_VERSION }} -m "Version v${{ env.PROJECT_VERSION }}"
         shell: bash
