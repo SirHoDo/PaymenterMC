@@ -29,6 +29,14 @@ jobs:
       - name: Build with Maven
         run: mvn clean package -Dmaven.javadoc.skip=true
 
+      - name: Create Git Tag
+        run: git tag -a v${{ env.PROJECT_VERSION }} -m "Version v${{ env.PROJECT_VERSION }}"
+        shell: bash
+
+      - name: Push Git Tag
+        run: git push origin v${{ env.PROJECT_VERSION }}
+        shell: bash
+
       - name: Create or Update Release
         id: create_release
         uses: softprops/action-gh-release@v1
@@ -37,7 +45,7 @@ jobs:
           tag_name: v${{ env.PROJECT_VERSION }}
           title: Release v${{ env.PROJECT_VERSION }}
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get Release ID
         id: get_release
@@ -58,4 +66,4 @@ jobs:
           prerelease: false
           release_id: ${{ steps.get_release.outputs.release_id }}
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
