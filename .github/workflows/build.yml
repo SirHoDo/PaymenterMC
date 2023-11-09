@@ -70,6 +70,7 @@ jobs:
           files: target/MinecraftDonationStore-*.jar
           draft: false
           prerelease: false
-          release_id: ${{ steps.get_release.outputs.release_id }}
+          tag_name: v${{ env.PROJECT_VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
