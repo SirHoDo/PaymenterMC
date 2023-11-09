@@ -1,0 +1,19 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                             #
+#                          Paymenter                          #
+#                        Ethan  Primmer                       #
+#                                                             #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# Want to contribute to local translations? Please email support@iungo.tech
+# DM ethanprimmer on DISCORD for support
+
+# Available locales:
+#    default - English
+#
+
+locale: default
+apiToken: "xxxxxxxxxx"
+port: 3000
+
+Update-Notifier-Enabled: true

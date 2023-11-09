@@ -1,0 +1,27 @@
+name: Paymenter
+main: me.ethanprimmer.iungo.Main
+author: Ethan Primmer
+version: ${project.version}
+api-version: 1.13
+
+commands:
+  paymenter:
+    description: Paymenter Commands
+    aliases: [donate, buy]
+
+permissions:
+  paymenter.admin.*:
+    default: op
+    children:
+      paymenter.admin: true
+      paymenter.admin.updatenotify: true
+      paymenter.admin.reload: true
+  paymenter.admin:
+    description: Gives access to all Paymenter permissions
+    default: false
+  paymenter.admin.updatenotify:
+    description: Plugin Update Notifications
+    default: false
+  paymenter.admin.reload:
+    description: Reload the config files
+    default: false
