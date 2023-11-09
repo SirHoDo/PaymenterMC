@@ -31,7 +31,7 @@ jobs:
 
       - name: Set Git User Identity
         run: |
-          git config user.email "${{ secrets.EMAIL }}"
+          git config user.email "ethanprimmer2@gmail.com"
           git config user.name "SirHoDo"
         shell: bash
 
