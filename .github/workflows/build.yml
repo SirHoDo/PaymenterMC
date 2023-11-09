@@ -1,26 +1,53 @@
-name: Build
+name: Build and Release
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v2
         with:
           java-version: '17'
-          distribution: 'temurin'
-          cache: maven
+
       - name: Build with Maven
-        #run: mvn -B package --file pom.xml
         run: mvn clean package -Dmaven.javadoc.skip=true
 
+      - name: Create or Update Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: target/MinecraftDonationStore-*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Get Release ID
+        id: get_release
+        run: echo "::set-output name=release_id::${{ steps.create_release.outputs.release_id }}"
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-artifact
+          path: target/MinecraftDonationStore-*.jar
 
+      - name: Publish Release
+        if: success()
+        uses: softprops/action-gh-release@v1
+        with:
+          files: target/MinecraftDonationStore-*.jar
+          draft: false
+          prerelease: false
+          release_id: ${{ steps.get_release.outputs.release_id }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
