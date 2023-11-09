@@ -45,7 +45,7 @@ jobs:
           tag_name: v${{ env.PROJECT_VERSION }}
           title: Release v${{ env.PROJECT_VERSION }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Get Release ID
         id: get_release
@@ -66,4 +66,4 @@ jobs:
           prerelease: false
           release_id: ${{ steps.get_release.outputs.release_id }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
