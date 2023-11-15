@@ -39,7 +39,7 @@ jobs:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                 # Not the -javadoc or original .jar file
-                asset_path: target/$(ls target | grep -v javadoc | grep -v original | grep .jar)
-                asset_name: $(ls target | grep -v javadoc | grep -v original | grep .jar)
+                asset_path: $(find target -type f -name "*.jar" ! -name "*javadoc*" ! -name "*original*")
+                asset_name: $(basename $(find target -type f -name "*.jar" ! -name "*javadoc*" ! -name "*original*"))
                 asset_content_type: application/java-archive
                 upload_url: ${{ steps.create_release.outputs.upload_url }}
