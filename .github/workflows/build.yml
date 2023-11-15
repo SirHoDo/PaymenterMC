@@ -22,8 +22,9 @@ jobs:
           cache: 'maven'
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - name: Upload artifact
+        
+      - name: Upload artifact (not original- or -javadoc)
         uses: actions/upload-artifact@v2
         with:
           name: jar
-          path: target/*[^-javadoc].jar
+          path: target/[!original-]*[!-javadoc].jar
