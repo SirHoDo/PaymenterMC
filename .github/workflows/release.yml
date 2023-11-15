@@ -32,6 +32,11 @@ jobs:
               with:
                 draft: true
                 prerelease: ${{ contains(github.ref, 'rc') || contains(github.ref, 'beta') || contains(github.ref, 'alpha') }}
+            - name: Find jar
+              id: find-jar
+              run: |
+                echo ::set-output name=jar_file::$(find target -type f -name "*.jar" ! -name "*javadoc*" ! -name "*original*")
+
             - name: Upload release asset
               id: upload-release-asset
               uses: actions/upload-release-asset@v1
@@ -39,7 +44,7 @@ jobs:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                 # Not the -javadoc or original .jar file
-                asset_path: $(find target -type f -name "*.jar" ! -name "*javadoc*" ! -name "*original*")
-                asset_name: $(basename $(find target -type f -name "*.jar" ! -name "*javadoc*" ! -name "*original*"))
+                asset_path: ${{ steps.find-jar.outputs.jar_file }}
+                asset_name: ${{ steps.find-jar.outputs.jar_file | basename }}
                 asset_content_type: application/java-archive
                 upload_url: ${{ steps.create_release.outputs.upload_url }}
