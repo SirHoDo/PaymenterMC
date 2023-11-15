@@ -36,6 +36,10 @@ jobs:
               id: find-jar
               run: |
                 echo ::set-output name=jar_file::$(find target -type f -name "*.jar" ! -name "*javadoc*" ! -name "*original*")
+            - name: Basename
+              id: basename
+              run: |
+                    echo ::set-output name=basename::$(basename ${{ steps.find-jar.outputs.jar_file }})
 
             - name: Upload release asset
               id: upload-release-asset
@@ -45,6 +49,6 @@ jobs:
               with:
                 # Not the -javadoc or original .jar file
                 asset_path: ${{ steps.find-jar.outputs.jar_file }}
-                asset_name: ${{ steps.find-jar.outputs.jar_file | basename }}
+                asset_name: ${{ steps.basename.outputs.basename }}
                 asset_content_type: application/java-archive
                 upload_url: ${{ steps.create_release.outputs.upload_url }}
