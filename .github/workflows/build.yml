@@ -26,5 +26,5 @@ jobs:
       - name: Upload artifact (not original- or -javadoc)
         uses: actions/upload-artifact@v2
         with:
-          name: jar
+          name: build.jar
           path: target/[!original-]*[!-javadoc].jar
