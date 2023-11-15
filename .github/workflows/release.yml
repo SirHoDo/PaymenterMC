@@ -42,4 +42,4 @@ jobs:
                 asset_path: target/$(ls target | grep -v javadoc | grep -v original | grep .jar)
                 asset_name: $(ls target | grep -v javadoc | grep -v original | grep .jar)
                 asset_content_type: application/java-archive
-                release_id: ${{ steps.create_release.outputs.id }}
+                upload_url: ${{ steps.create_release.outputs.upload_url }}
